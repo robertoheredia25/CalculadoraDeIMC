@@ -17,11 +17,14 @@ public class controller {
         this.modeloCalculadora = modeloCalculadora;
         this.vistaCalculadora = vistaCalculadora;
     }
-    public void realizarCalculo(){
-     int num1 = vistaCalculadora.getNumero1();
-     int num2 = vistaCalculadora.getNumero2();
-     float resultado = modeloCalculadora.imc(num1, num2);
-     vistaCalculadora.setResultado(resultado);
-    }
+public void realizarCalculo() {
+    double peso = vistaCalculadora.getNumero1();
+    double altura = vistaCalculadora.getNumero2();
+
+    double imc = modeloCalculadora.imc(peso, altura);
+    String categoria = modeloCalculadora.categoria(imc);
+
+    vistaCalculadora.setResultado(String.format("%.2f - %s", imc, categoria), imc);
+}
 
 }

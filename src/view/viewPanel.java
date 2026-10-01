@@ -20,20 +20,21 @@ controller objetoControlador;
         model modeloCalculadora = new model();
         objetoControlador = new controller(modeloCalculadora, this);
     }
-   public int getNumero1(){
-       return Integer.parseInt(txtKg.getText());
-   }
-    public int getNumero2(){
-       return Integer.parseInt(txtAltura.getText());
-   }
-    public void setResultado(float resultado){
-    txtResultado.setText(String.valueOf(resultado));
-     if (resultado > 25) {
+   public double getNumero1() {
+    return Double.parseDouble(txtKg.getText().replace(",", "."));
+}
+
+public double getNumero2() {
+    return Double.parseDouble(txtAltura.getText().replace(",", "."));
+}
+    public void setResultado(String texto, double imc) {
+    txtResultado.setText(texto);
+    if (imc >= 25) {
         txtResultado.setForeground(java.awt.Color.RED);
     } else {
-        txtResultado.setForeground(java.awt.Color.WHITE);
+        txtResultado.setForeground(java.awt.Color.BLACK);
     }
-    } 
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
