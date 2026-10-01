@@ -27,4 +27,4 @@ public void realizarCalculo() {
     vistaCalculadora.setResultado(String.format("%.2f - %s", imc, categoria), imc);
 }
 
-}
+}  
