@@ -11,39 +11,41 @@ import model.model;
  */
 
 public class viewPanel extends javax.swing.JPanel {
-controller objetoControlador;
-    /*txtKg
+    controller objetoControlador;
+ 
+    /**
      * Creates new form viewPanel
      */
     public viewPanel() {
         initComponents();
         model modeloCalculadora = new model();
         objetoControlador = new controller(modeloCalculadora, this);
+ 
+        BtCalcular.addActionListener(e -> objetoControlador.realizarCalculo());
     }
-   public double getNumero1() {
-    return Double.parseDouble(txtKg.getText().replace(",", "."));
-}
-
-public double getNumero2() {
-    return Double.parseDouble(txtAltura.getText().replace(",", "."));
-}
+ 
+    public double getNumero1() {
+        return Double.parseDouble(txtKg.getText().replace(",", "."));
+    }
+ 
+    public double getNumero2() {
+        return Double.parseDouble(txtAltura.getText().replace(",", "."));
+    }
+ 
     public void setResultado(String texto, double imc) {
-    txtResultado.setText(texto);
+        txtResultado.setText(texto);
+ 
+        if (imc < 18.5) {
+            txtResultado.setForeground(new java.awt.Color(255, 140, 0));
+        } else if (imc < 25) {
+            txtResultado.setForeground(new java.awt.Color(0, 150, 0));
+        } else if (imc < 30) {
+            txtResultado.setForeground(new java.awt.Color(255, 140, 0));
+        } else {
 
-    if (imc < 18.5) {
-
-        txtResultado.setForeground(new java.awt.Color(255, 140, 0));
-    } else if (imc < 25) {
-
-        txtResultado.setForeground(new java.awt.Color(0, 150, 0));
-    } else if (imc < 30) {
-
-        txtResultado.setForeground(new java.awt.Color(255, 140, 0));
-    } else {
-
-        txtResultado.setForeground(java.awt.Color.RED);
+            txtResultado.setForeground(java.awt.Color.RED);
+        }
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,42 +92,46 @@ public double getNumero2() {
                 .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtKg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(txtAltura, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(176, 176, 176))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(144, 144, 144))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BtCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(175, 175, 175))))
+                                .addComponent(txtResultado))
+                            .addComponent(BtCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtKg, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                    .addComponent(txtAltura))))
+                        .addGap(158, 158, 158))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(BtCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(txtKg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 18, Short.MAX_VALUE))
+                    .addComponent(txtAltura))
                 .addGap(18, 18, 18)
+                .addComponent(BtCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -134,7 +140,7 @@ public double getNumero2() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCalcularActionPerformed
-       objetoControlador.realizarCalculo();
+
     }//GEN-LAST:event_BtCalcularActionPerformed
 
     private void txtKgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKgActionPerformed
